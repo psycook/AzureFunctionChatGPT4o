@@ -1,0 +1,7 @@
+import azure.functions as func
+from ChatGPT4oSimpleChatCompletion import simple_chat_completion_blueprint
+from ChatGPT4oFullChatCompletion import full_chat_completion_blueprint
+
+app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
+app.register_blueprint(simple_chat_completion_blueprint)
+app.register_blueprint(full_chat_completion_blueprint)
