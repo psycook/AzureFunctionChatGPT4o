@@ -48,11 +48,51 @@ Content-Type: application/json
 }
 
 ###
-POST https://chatgtp-4o.azurewebsites.net/api/ChatGPT4o
+POST https://chatgtp-4o.azurewebsites.net/api/ChatGPT4oSimpleChatCompletion
 Content-Type: application/json
 
 {
     "system_text": "You are an AI assistant that helps people find information.",
     "image_url": "https://4.bp.blogspot.com/-C6D8IhOzTTI/XCDoJrzeZeI/AAAAAAABFTs/NoXurv2f6sYlN9Gxo7Lhjy2WX7FEIK17ACLcBGAs/s1600/Earthrise1_Apollo8AndersWeigang_2048.jpg",
     "user_text": "Describe this image"
+}
+
+###
+POST http://chatgtp-4o.azurewebsites.net/api/ChatGPT4oFullChatCompletion
+Content-Type: application/json
+
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "You are an AI assistant that helps people find information."
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://i.pinimg.com/736x/81/86/df/8186dfb0730e083593d088f772d0739a.jpg"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Describe this image"
+                }
+            ]
+        }
+    ],
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 800,
+    "stop": null,
+    "stream": false
 }
