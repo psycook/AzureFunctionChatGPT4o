@@ -33,7 +33,7 @@ Content-Type: application/json
                 },
                 {
                     "type": "text",
-                    "text": "Describe this image"
+                    "text": "Describe this image and suggest 10 holdiay destinations base on it."
                 }
             ]
         }
@@ -48,7 +48,50 @@ Content-Type: application/json
 }
 
 ###
-POST https://chatgtp-4o.azurewebsites.net/api/ChatGPT4oSimpleChatCompletion
+POST http://localhost:7071/api/chatgpt4osimplechatcompletion
+Content-Type: application/json
+
+{
+    "system_text": "You are an AI assistant that helps users create lists of items in their homes to be included in their home insurance policies.",
+    "image_url": "https://thewondercottage.com/wp-content/uploads/2019/07/img_2521.jpg",
+    "user_text": "Examine this photo and list all the items in the photo that should be included in a house insurance policy.  Please respond with a JSON object and no additional text.  Do not wrap the response in a json or code block.
+
+Follow these rules:
+Category should be: Electronices, Furniture, Toy, Decor, Lighting, Personal or Other
+CostCategory should only be low, medium or high
+Do not include people or animals
+The CostForFilter is a signle integer number based on the CostEsimate
+
+Example Response:
+{
+    ""Name"": ""Living Room"",
+    ""Description"": ""The photo show an image of a living room"",
+    ""Instructions"": ""Save your receipts and photos"",
+    ""Items"" : 
+    [
+        {
+            ""Name"": ""Television"",
+            ""Category"": ""Electronics"",
+            ""CostCategory"": ""High"",
+            ""CostEstimate"": ""£500 - £1000""
+            ""CostForFilter"": 750
+        },
+        {
+            ""Name"": ""XBox"",
+            ""Category"": ""Electronics"",
+            ""CostCategory"": ""Medium"",
+            ""CostEstimate"": ""250 - 500"",
+            ""CostForFilter"": 375
+        },
+    ]
+}
+
+JSON:"
+}
+
+
+###
+POST https://chatgtp-4o.azurewebsites.net/api/chatgpt4osimplechatcompletion
 Content-Type: application/json
 
 {
@@ -57,8 +100,9 @@ Content-Type: application/json
     "user_text": "Describe this image"
 }
 
+
 ###
-POST http://chatgtp-4o.azurewebsites.net/api/ChatGPT4oFullChatCompletion
+POST https://chatgtp-4o.azurewebsites.net/api/chatgpt4ofullchatcompletion
 Content-Type: application/json
 
 {
@@ -83,7 +127,7 @@ Content-Type: application/json
                 },
                 {
                     "type": "text",
-                    "text": "Describe this image"
+                    "text": "Describe this image and suggest 10 holdiay destinations base on it."
                 }
             ]
         }
@@ -95,4 +139,47 @@ Content-Type: application/json
     "max_tokens": 800,
     "stop": null,
     "stream": false
+}
+
+
+###
+POST https://chatgtp-4o.azurewebsites.net/api/chatgpt4osimplechatcompletion
+Content-Type: application/json
+
+{
+    "system_text": "You are an AI assistant that helps users create lists of items in their homes to be included in their home insurance policies.",
+    "image_url": "https://thewondercottage.com/wp-content/uploads/2019/07/img_2521.jpg",
+    "user_text": "Examine this photo and list all the items in the photo that should be included in a house insurance policy.  Please respond with a JSON object and no additional text.  Do not wrap the response in a json or code block.
+
+Follow these rules:
+Category should be: Electronices, Furniture, Toy, Decor, Lighting, Personal or Other
+CostCategory should only be low, medium or high
+Do not include people or animals
+The CostForFilter is a signle integer number based on the CostEsimate
+
+Example Response:
+{
+    ""Name"": ""Living Room"",
+    ""Description"": ""The photo show an image of a living room"",
+    ""Instructions"": ""Save your receipts and photos"",
+    ""Items"" : 
+    [
+        {
+            ""Name"": ""Television"",
+            ""Category"": ""Electronics"",
+            ""CostCategory"": ""High"",
+            ""CostEstimate"": ""£500 - £1000""
+            ""CostForFilter"": 750
+        },
+        {
+            ""Name"": ""XBox"",
+            ""Category"": ""Electronics"",
+            ""CostCategory"": ""Medium"",
+            ""CostEstimate"": ""250 - 500"",
+            ""CostForFilter"": 375
+        },
+    ]
+}
+
+JSON:"
 }
